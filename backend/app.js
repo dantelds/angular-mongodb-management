@@ -5,56 +5,6 @@ var express         = require("express"),
     mongoose        = require('mongoose'),
     Admin = mongoose.mongo.Admin;
 
-// Connection to DB
-/*
-mongoose.connect('mongodb://localhost/warlockUniverse');
-console.log('1');
-mongoose.connection.on('open', function(){
-  console.log('2---->', mongoose.connection.db);
-  mongoose.connection.db.listCollections(function(error, collections) {
-    console.log('3');
-    if (error) {
-      throw new Error(error);
-    } else {
-      collections.map(function(collection) {
-        console.log('found collection %s', collection.name);
-      });
-    }
-  });
-});
-/*
-mongoose.connection.close();    
- mongoose.connect('mongodb://localhost/warlockUniverse', function(err, res) {
-        if(err) throw err;
-        console.log('mongoose.connection.db------->',mongoose.connection.db);
-        mongoose.connection.db.l(function (err, collections) {
-            console.log('soy las colleciones',collections); // [{ name: 'dbname.myCollection' }]
-            res.status(200).jsonp(collections);
-            mongoose.connection.close();    
-        });
-   });*/
-/*
-var connection = mongoose.createConnection('mongodb://admin:123456@localhost/admin');
-mongoose.connect('mongodb://localhost/', function(err, res) {
-  if(err) throw err;
-  console.log('Connected to Database');
-  
-});*/
-
-/*var connection = mongoose.createConnection('mongodb://admin:123456@localhost/admin');
-
-
-mongoose.connect('mongodb://localhost/', function(err, res) {
-  if(err) throw err;
-  new Admin(connection.db).listDatabases(function(err, result) {
-         if(err) throw err;
-        var allDatabases = result.databases;    
-        console.log('listDatabases succeeded----->', allDatabases);
-    });
-  console.log('Connected to Database');
-});*/
-
-
 
 
 // Middlewares
@@ -67,6 +17,7 @@ var models     = require('./models/warlocks')(app, mongoose),
  WarlockCtrl = require('./controllers/warlocks'),
  DataBasesCtrl = require('./controllers/databases'),
  CollectionsCtrl = require('./controllers/collections');
+
 // Example Route
 var router = express.Router();
 router.get('/', function(req, res) {
@@ -93,7 +44,6 @@ api.route('/warlock/:id')
 
 
 app.use(function (req, res, next) {
-console.log("Setting header");
   // Website you wish to allow to connect
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
 
