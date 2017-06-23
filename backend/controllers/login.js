@@ -14,8 +14,10 @@ exports.login = function (req, res) {
             console.log('error de credenciales', err);
             res.send(err);
     }); 
-    console.log('url--->', 'mongodb://'+req.body.username+':'+req.body.password+'@localhost/');
+   /* console.log('req.body---->', req);
+    console.log('url--->', 'mongodb://'+req.body.username+':'+req.body.password+'@localhost/');*/
     //MongoClient.connect('mongodb://localhost/');
-    mongoose.connect('mongodb://'+req.body.username+':'+req.body.password+'@localhost/');
+    mongoose.connect('mongodb://'+req.body.username+':'+req.body.password+'@localhost/admin');
+    //mongoose.connect('mongodb://admin:admin@localhost/');
 };
 
