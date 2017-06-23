@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-xs-2 col-sm-3  "></div>
+  <div class="col-xs-8 col-sm-6 ">
+    <form id="login-form" class="text-left">
+      <div class="row text-center">
+        <h1>{{ 'login-header' | translate }}</h1>
+        <p>{{ 'login-sub-header' | translate }}</p>
+        <div [hidden]="!error"
+             class="alert alert-danger">
+          {{error}}
+        </div>
+      </div>
+      <div class="login-form-main-message"></div>
+      <div class="main-login-form">
+        <div class="login-group">
+          <input-component [setup]="userInput"></input-component>
+          <input-component [setup]="passwordInput"></input-component>
+          <input-component [setup]="nameInput"></input-component>
+          <input-component [setup]="lastNameInput"></input-component>
+          <select-component [setup]="genderSelect"></select-component>
+          <input-component [setup]="birthDateInput"></input-component>
+          <select-component [setup]="schoolSelect" (onOptionSelected)='onSelectSchool($event)'></select-component>
+          <div [hidden]="!schoolText"
+               class="alert alert-success">
+            <p>{{schoolText}}</p>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-md" (click)="signUp()">{{ 'user-SignUp' | translate }}</button>
+      </div>
+      <hr/>
+      <div class="etc-login-form">
+        <p>{{ 'user-already-a-user' | translate }} <a [routerLink]="['/login']">{{ 'user-SignIn' | translate }}</a></p>
+      </div>
+    </form>
+  </div>
+  <div class="col-xs-2 col-sm-3 "></div>
+
+</div>

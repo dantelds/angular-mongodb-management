@@ -1,0 +1,10 @@
+<div class="form-group">
+  <label for="{{setup.id}}" class="sr-only">{{setup.label}} </label>
+  <input  type="{{setup.type}}" id="{{setup.id}}" placeholder="{{setup.placeholder}}"
+         name="{{setup.name}}"  class="form-control {{setup.extraClass}}"
+          [(ngModel)]="setup.model" #inputComponent="ngModel" [required]="setup.required"/>
+  <div *ngIf="setup.required" [hidden]="inputComponent.valid || inputComponent.pristine"
+       class="alert alert-danger">
+    {{setup.error}}
+  </div>
+</div>

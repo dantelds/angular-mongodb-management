@@ -1,0 +1,13 @@
+<div class="form-group">
+  <label for="{{setup.id}}" class="sr-only">{{setup.label}} </label>
+  <select  class="form-control {{setup.extraClass}}" id="{{setup.id}}" name="{{setup.name}}"
+           [(ngModel)]="setup.model" #selectComponent="ngModel" (ngModelChange)="onSelectOption($event)" [required]="setup.required">
+    <option *ngFor="let option of setup.options"  value="{{option.value}}" [selected]="option.value == setup.model">
+      {{option.text}}
+    </option>
+  </select>
+  <div *ngIf="setup.required"[hidden]="selectComponent.valid || selectComponent.pristine"
+       class="alert alert-danger">
+    {{setup.error}}
+  </div>
+</div>

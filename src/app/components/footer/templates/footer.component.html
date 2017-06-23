@@ -1,0 +1,17 @@
+<hr/>
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <nav  *ngIf="setup.links">
+      <ul class="nav navbar-nav">
+        <li *ngFor="let link of setup.links">
+          <link-component [setup]="link" (onLinkClicked)="onSelectItem(link)"></link-component>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="col-xs-12" [ngClass]="{'col-sm-6': setup.links}">
+    <p *ngIf="setup.message" class="text-center">
+      {{setup.message}}
+    </p>
+  </div>
+</div>

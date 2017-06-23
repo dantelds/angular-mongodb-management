@@ -1,0 +1,23 @@
+<div *ngIf="setup" class="row gear" (click)='onClick(setup)'>
+  <h5>{{setup.header}}</h5>
+  <div *ngIf="setup.image"  class="image">
+        <image-component [setup]="setup.image"></image-component>
+  </div>
+  <div  *ngIf="setup.description" class="description">
+      {{setup.description}}
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

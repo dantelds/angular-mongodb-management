@@ -15,6 +15,7 @@ app.use(methodOverride());
 // Import Models and controllers
 var models     = require('./models/warlocks')(app, mongoose),
  WarlockCtrl = require('./controllers/warlocks'),
+ LoginCtrl = require('./controllers/login'),
  DataBasesCtrl = require('./controllers/databases'),
  CollectionsCtrl = require('./controllers/collections');
 
@@ -27,6 +28,8 @@ app.use(router);
 
 // API routes
 var api = express.Router();
+api.route('/login')
+  .post(LoginCtrl.login);
 api.route('/databases')
    .get(DataBasesCtrl.getDatabases);
 api.route('/collections/:dbname')
@@ -35,8 +38,6 @@ api.route('/warlock')
    .get(WarlockCtrl.findAllWarlocks);
 api.route('/signup')
   .post(WarlockCtrl.createWarlock);
-api.route('/login')
-  .post(WarlockCtrl.findWarlock);
 api.route('/warlock/:id')
   .put(WarlockCtrl.updateWarlock)
   .delete(WarlockCtrl.deleteWarlock);
