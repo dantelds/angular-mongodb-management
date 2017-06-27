@@ -1,0 +1,23 @@
+{
+  "name": "angular-quickstart",
+  "version": "1.0.0",
+  "description": "QuickStart package.json from the documentation, supplemented with testing support",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "core-js": "^2.4.1",
+    "express": "^4.7.1",
+    "express-jwt": "^5.3.0",
+    "jwt-simple": "^0.5.1",
+    "method-override": "^2.1.2",
+    "mongoose": "4.10.8",
+    "rxjs": "5.0.1",
+    "systemjs": "0.19.40",
+    "zone.js": "^0.8.4"
+  },
+  "devDependencies": {},
+  "repository": {}
+}

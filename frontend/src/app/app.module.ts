@@ -5,14 +5,9 @@ import {HttpModule, JsonpModule} from '@angular/http';
 
 import {SharedModule} from './shared/shared.module';
 
-import {ArenaModule} from './modules/arena/arena.module';
+import {DashboardModule} from './modules/dashboard/dashboard.module';
 import {ComingSoonModule} from './modules/coming-soon/coming-soon.module';
-import {DungeonModule} from './modules/dungeon/dungeon.module';
 import {LoginModule} from './modules/login/login.module';
-import {SchoolModule} from './modules/school/school.module';
-import {SignUpModule} from './modules/sign-up/sign-up.module';
-import {StoreModule} from './modules/store/store.module';
-import {WarlockModule} from './modules/warlock/warlock.module';
 
 
 import {AppRoutingModule} from './app.routes';
@@ -29,7 +24,7 @@ import {FooterModule} from "./components/footer/footer.module";
 
 
 @NgModule({
-  imports: [ArenaModule, ComingSoonModule, DungeonModule, FooterModule, LoginModule, LogOutModule, MenuModule, SchoolModule, SharedModule, SignUpModule, StoreModule, WarlockModule, FormsModule, BrowserModule, HttpModule, JsonpModule, AppRoutingModule],
+  imports: [ ComingSoonModule, DashboardModule, FooterModule, LoginModule, LogOutModule, MenuModule,  SharedModule, FormsModule, BrowserModule, HttpModule, JsonpModule, AppRoutingModule],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
   providers: [GeneralService, TRANSLATION_PROVIDERS, TranslateService]

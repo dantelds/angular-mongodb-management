@@ -10,6 +10,6 @@ import {GeneralService} from '../../services/general.service';
 })
 export class ComingSoonModule {
   constructor(private GeneralService: GeneralService){
-    console.log('current user-------->', this.GeneralService.user);
+    console.log('current user-------->', this.GeneralService.token);
   }
 }

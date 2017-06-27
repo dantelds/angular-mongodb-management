@@ -30,7 +30,7 @@ export class AppComponent {
   }
 
   private onUserLogin() {
-    this.router.navigate(['/warlock']);
+    this.router.navigate(['/dashboard']);
   }
 
 

@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 export class LogOutComponent {
 
   constructor(private GeneralService: GeneralService, private router: Router) {
-    GeneralService.user = null;
+    GeneralService.token = null;
     this.router.navigate(['/login']);
   }
 

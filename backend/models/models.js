@@ -1,6 +1,6 @@
 exports = module.exports = function(app, mongoose) {
 
-	var warlockSchema = new mongoose.Schema({
+/*	var warlockSchema = new mongoose.Schema({
     username: 		{ type: String },
     password: 		{ type: String },
 		name: 		{ type: String },
@@ -13,6 +13,14 @@ exports = module.exports = function(app, mongoose) {
 		strength: 	{ type: Number }
 	});
 
-	mongoose.model('warlocks', warlockSchema);
+	mongoose.model('warlocks', warlockSchema);*/
+
+	var userSchema = new mongoose.Schema({
+    username: 		{ type: String },
+    password: 		{ type: String }		
+	});
+
+	mongoose.model('user', userSchema);
 
 };
+

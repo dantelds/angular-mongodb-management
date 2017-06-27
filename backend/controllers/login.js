@@ -1,23 +1,21 @@
 var mongoose = require('mongoose'),
-    MongoClient = require('mongodb').MongoClient,
-    jwt = require('express-jwt');
+    userModel = mongoose.model('user'),
+    jwt = require('express-jwt'),
+    service = require('../services/service'),
+    Admin = mongoose.mongo.Admin;
 
 
 exports.login = function (req, res) {
-    mongoose.connection.once('open', function(paso1, paso2){
-            console.log('estoy conectado', paso1);
-            console.log('estoy conectado', paso2);   
-            res.send(paso1);
-            mongoose.connection.close();   
+    mongoose.connection.once('error', function (err) {
+        res.status(500).send(err.message);
     });
-    mongoose.connection.once('error', function(err){
-            console.log('error de credenciales', err);
-            res.send(err);
-    }); 
-   /* console.log('req.body---->', req);
-    console.log('url--->', 'mongodb://'+req.body.username+':'+req.body.password+'@localhost/');*/
-    //MongoClient.connect('mongodb://localhost/');
-    mongoose.connect('mongodb://'+req.body.username+':'+req.body.password+'@localhost/admin');
-    //mongoose.connect('mongodb://admin:admin@localhost/');
+    mongoose.connection.once('open', function () {     
+                mongoose.connection.db.close(); 
+                res.status(200).send({ token: service.createToken({user:req.body.username, pwd:req.body.password})});   
+        
+    });
+    mongoose.connect('mongodb://localhost:27017/admin', {user:req.body.username, pwd:req.body.password});
+
 };
+
 

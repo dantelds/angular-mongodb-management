@@ -14,26 +14,26 @@ import {UserModel} from "../../shared/models/user.model";
 export class LoginComponent {
   error: string = null;
   logo: ImageModel = new ImageModel('logo', '', '/images/logo.png');
-  modelTest: string = 'test';
-
-  user: UserModel = this.GeneralService.returnEmptyUser();
+  username:string;
+  password:string;
   userInput: InputModel = new InputModel(this._translate.instant('user-username-required'), null, 'lg_username',
-    this._translate.instant('user-username'), this.user.username, 'lg_username', this._translate.instant('user-username'), true, 'text' );
+    this._translate.instant('user-username'), this.username, 'lg_username', this._translate.instant('user-username'), true, 'text' );
 
   passwordInput: InputModel = new InputModel(this._translate.instant('user-password-required'), null, 'lg_password',
-    this._translate.instant('user-password'), this.user.password, 'lg_password', this._translate.instant('user-password'), true, 'password' );
+    this._translate.instant('user-password'), this.password, 'lg_password', this._translate.instant('user-password'), true, 'password' );
 
 
   constructor(private GeneralService: GeneralService, private _translate: TranslateService) {
-    if(this.GeneralService.user)
+    if(this.GeneralService.token)
     {
-      this.GeneralService.loginManagerEmmit(this.GeneralService.user);
+      this.GeneralService.loginManagerEmmit(this.GeneralService.token);
     }
   }
 
-  onLogin(user: UserModel) {
-    this.error = null;
-    //this.GeneralService.loginManagerEmmit(user);
+  onLogin(Response:any) {
+    this.error = null;    
+    this.GeneralService.token = Response.token;
+    this.GeneralService.loginManagerEmmit(Response.token);
   }
 
   onError(error: any) {
@@ -46,7 +46,6 @@ export class LoginComponent {
       username: this.userInput.model,
       password: this.passwordInput.model
     };
-    console.log('body---->', body);
     this.GeneralService.apiCall('post', 'login', body).subscribe((Response: any) => this.onLogin(Response), (Error: any) => this.onError(Error));
 
   }
